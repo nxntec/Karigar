@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karigar — Trusted hands for your home</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --indigo:#1B3556;
+  --indigo-deep:#122542;
+  --marigold:#E8A33D;
+  --brick:#C1502E;
+  --paper:#EEF2F5;
+  --paper-2:#FFFFFF;
+  --ink:#16232F;
+  --ink-soft:#4C5C6B;
+  --line:#D8E0E6;
+  --good:#2F7D4F;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Fraunces',serif;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+/* ---------- NAV ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(238,242,245,0.9);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+nav.wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.logo{font-family:'Fraunces',serif;font-weight:700;font-size:24px;letter-spacing:-0.5px;color:var(--indigo-deep);}
+.logo span{color:var(--brick);}
+.nav-links{display:flex;gap:32px;font-size:14px;font-weight:600;color:var(--ink-soft);}
+.nav-cta{display:flex;gap:12px;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;
+  cursor:pointer;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--brick);color:#fff;box-shadow:0 6px 16px rgba(193,80,46,0.28);}
+.btn-primary:hover{box-shadow:0 8px 20px rgba(193,80,46,0.38);}
+.btn-ghost{border-color:var(--indigo);color:var(--indigo);background:transparent;}
+.btn-ghost:hover{background:var(--indigo);color:#fff;}
+.btn-sm{padding:8px 16px;font-size:13px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(180deg,#F5F0E4 0%, var(--paper) 60%);
+  border-bottom:1px solid var(--line);
+  padding:72px 0 56px;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--good);background:#E4F1E9;padding:6px 12px;border-radius:999px;margin-bottom:20px;
+}
+.eyebrow::before{content:"●";font-size:10px;}
+.hero h1{
+  font-size:clamp(34px,4.6vw,56px);line-height:1.05;font-weight:600;color:var(--indigo-deep);
+  letter-spacing:-1px;margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--brick);}
+.hero p{font-size:17px;color:var(--ink-soft);max-width:520px;line-height:1.6;margin-bottom:32px;}
+
+.search-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:8px;display:flex;gap:8px;box-shadow:0 14px 40px rgba(18,37,66,0.10);
+}
+.search-card input{
+  flex:1;border:none;outline:none;padding:14px 16px;font-size:15px;font-family:'Inter',sans-serif;
+  background:transparent;color:var(--ink);
+}
+.search-card input::placeholder{color:#9BA9B4;}
+.search-card .divider{width:1px;background:var(--line);margin:8px 0;}
+
+.trust-row{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink-soft);}
+.trust-item .dot{width:8px;height:8px;border-radius:50%;background:var(--marigold);}
+
+/* Hero visual: worker ledger card */
+.ledger{
+  background:var(--indigo-deep);border-radius:20px;padding:26px;color:#fff;
+  position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(18,37,66,0.35);
+}
+.ledger::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 85% 0%, rgba(232,163,61,0.25), transparent 55%);
+}
+.ledger-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;position:relative;}
+.ledger-head .name{font-family:'Fraunces',serif;font-size:19px;font-weight:600;}
+.ledger-head .role{font-size:12.5px;color:#AEC0D2;margin-top:2px;}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#E8A33D,#C1502E);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;}
+.check-list{display:flex;flex-direction:column;gap:11px;position:relative;margin-bottom:20px;}
+.check-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#DCE6EE;}
+.check-item .tick{
+  width:18px;height:18px;border-radius:50%;background:var(--good);
+  display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;
+}
+.stat-strip{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;position:relative;}
+.stat{flex:1;}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:20px;}
+.stat span{font-size:11.5px;color:#AEC0D2;}
+
+/* ---------- LOGO/TRUST BAR ---------- */
+.strip{padding:26px 0;border-bottom:1px solid var(--line);background:var(--paper-2);}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.strip-item{font-size:13px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+
+/* ---------- SECTION HEADERS ---------- */
+.section{padding:80px 0;}
+.section-head{max-width:640px;margin-bottom:48px;}
+.section-head .kicker{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brick);margin-bottom:12px;}
+.section-head h2{font-size:clamp(26px,3.2vw,38px);color:var(--indigo-deep);font-weight:600;letter-spacing:-0.5px;line-height:1.15;}
+.section-head p{color:var(--ink-soft);margin-top:14px;font-size:15.5px;line-height:1.6;}
+
+/* ---------- CATEGORY GRID ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cat-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.cat-card:hover{border-color:var(--indigo);transform:translateY(-3px);}
+.cat-card .ic{
+  width:44px;height:44px;border-radius:10px;background:#F5EFE0;
+  display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;
+}
+.cat-card h3{font-size:15.5px;font-weight:700;margin-bottom:4px;}
+.cat-card p{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
+.cat-card .price{font-size:12px;font-weight:700;color:var(--good);}
+
+/* ---------- HOW IT WORKS ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+.step{padding:0 28px;position:relative;}
+.step:not(:last-child)::after{
+  content:"";position:absolute;top:26px;right:-14px;width:28px;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px);
+}
+.step .num{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:var(--brick);border:1.5px solid var(--brick);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.step h3{font-size:17px;margin-bottom:8px;color:var(--indigo-deep);}
+.step p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+
+/* ---------- PRICING TRANSPARENCY ---------- */
+.price-panel{
+  background:var(--indigo-deep);border-radius:24px;padding:48px;color:#fff;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.price-panel h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
+.price-panel p{color:#C7D4E0;font-size:15px;line-height:1.65;margin-bottom:22px;}
+.price-list{display:flex;flex-direction:column;gap:14px;}
+.price-row{
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;padding:16px 18px;
+}
+.price-row .job{font-size:14px;font-weight:600;}
+.price-row .job span{display:block;font-size:12px;color:#9FB2C4;font-weight:400;margin-top:2px;}
+.price-row .amt{font-family:'Fraunces',serif;font-size:19px;color:var(--marigold);}
+.no-hidden{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:13px;color:#DCE6EE;font-weight:600;}
+
+/* ---------- REVENUE / OPS MODEL ---------- */
+.model-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.model-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+.model-card .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--brick);margin-bottom:10px;}
+.model-card h3{font-size:16px;margin-bottom:8px;color:var(--indigo-deep);}
+.model-card p{font-size:13px;color:var(--ink-soft);line-height:1.55;}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+.testi p{font-size:14.5px;line-height:1.65;color:var(--ink);margin-bottom:18px;}
+.testi-who{display:flex;align-items:center;gap:12px;}
+.testi-who .av{width:38px;height:38px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--indigo);}
+.testi-who b{font-size:13.5px;display:block;}
+.testi-who span{font-size:12px;color:var(--ink-soft);}
+
+/* ---------- PROVIDER CTA ---------- */
+.provider-band{
+  background:linear-gradient(120deg,#F5EFE0 0%, var(--paper) 100%);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:64px 0;
+}
+.provider-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center;}
+.provider-grid h2{color:var(--indigo-deep);font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
+.provider-grid p{color:var(--ink-soft);font-size:15px;line-height:1.6;margin-bottom:22px;max-width:480px;}
+.mini-stats{display:flex;gap:28px;}
+.mini-stats div b{display:block;font-family:'Fraunces',serif;font-size:24px;color:var(--brick);}
+.mini-stats div span{font-size:12px;color:var(--ink-soft);}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--indigo-deep);color:#AEC0D2;padding:56px 0 28px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;}
+.foot-grid .logo{color:#fff;margin-bottom:12px;}
+.foot-grid p{font-size:13px;line-height:1.6;max-width:280px;}
+.foot-col h4{color:#fff;font-size:13px;margin-bottom:14px;font-weight:700;}
+.foot-col a{display:block;font-size:13px;margin-bottom:10px;color:#AEC0D2;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.12);padding-top:22px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#8CA0B3;}
+
+@media(max-width:900px){
+  .hero-grid,.price-panel,.provider-grid{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .steps{grid-template-columns:1fr;gap:32px;}
+  .step:not(:last-child)::after{display:none;}
+  .model-grid{grid-template-columns:repeat(2,1fr);}
+  .testi-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Kari<span>gar</span></div>
+    <div class="nav-links">
+      <a href="#categories">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#providers">For karigars</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#providers">List your work</a>
+      <a class="btn btn-primary btn-sm" href="#hero-search">Get a quote</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="hero-search">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Aadhaar-verified karigars near you</div>
+      <h1>Find someone your <em>society WhatsApp group</em> would trust.</h1>
+      <p>Plumbers, electricians, AC technicians and painters — background-checked, rated by your neighbourhood, and priced before they knock on your door. No advance payment, ever.</p>
+
+      <div class="search-card">
+        <input type="text" placeholder="What's the problem? e.g. AC not cooling" />
+        <div class="divider"></div>
+        <input type="text" style="max-width:160px" placeholder="PIN code" />
+        <button class="btn btn-primary">Find karigar</button>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item"><span class="dot"></span>Pay after the job is done</div>
+        <div class="trust-item"><span class="dot"></span>Police-verified professionals</div>
+        <div class="trust-item"><span class="dot"></span>Hindi, English &amp; 6 more languages</div>
+      </div>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-head">
+        <div>
+          <div class="name">Ramesh Kumar</div>
+          <div class="role">Electrician · Vaishali, Ghaziabad</div>
+        </div>
+        <div class="avatar">RK</div>
+      </div>
+      <div class="check-list">
+        <div class="check-item"><span class="tick">✓</span>Aadhaar &amp; address verified</div>
+        <div class="check-item"><span class="tick">✓</span>Police verification on file</div>
+        <div class="check-item"><span class="tick">✓</span>142 jobs completed within 3 km</div>
+        <div class="check-item"><span class="tick">✓</span>No-show rate: 0% (last 6 months)</div>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><b>4.8★</b><span>318 ratings</span></div>
+        <div class="stat"><b>18 min</b><span>avg. response</span></div>
+        <div class="stat"><b>₹149</b><span>visiting charge</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item">🛡️ Every karigar background-checked before listing</div>
+    <div class="strip-item">💬 Book over WhatsApp or the app</div>
+    <div class="strip-item">💳 UPI, cash or card — your choice</div>
+    <div class="strip-item">↩️ Free re-visit if the issue repeats in 7 days</div>
+  </div>
+</div>
+
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What we cover</div>
+      <h2>The jobs every Indian home eventually needs done.</h2>
+      <p>Fixed visiting charges shown upfront. The final estimate is always confirmed with you before work starts — never a surprise bill.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="ic">🔌</div><h3>Electrician</h3><p>Wiring, switchboards, fan &amp; MCB repair</p><div class="price">From ₹149 visit</div></div>
+      <div class="cat-card"><div class="ic">🚰</div><h3>Plumber</h3><p>Leak fixing, tap &amp; tank work, blockages</p><div class="price">From ₹149 visit</div></div>
+      <div class="cat-card"><div class="ic">❄️</div><h3>AC Service</h3><p>Gas top-up, servicing, installation</p><div class="price">From ₹499 service</div></div>
+      <div class="cat-card"><div class="ic">🎨</div><h3>Painting</h3><p>Room, full-flat &amp; touch-up painting</p><div class="price">Free site estimate</div></div>
+      <div class="cat-card"><div class="ic">🧹</div><h3>Deep Cleaning</h3><p>Kitchen, bathroom &amp; full-home cleaning</p><div class="price">From ₹999</div></div>
+      <div class="cat-card"><div class="ic">🐜</div><h3>Pest Control</h3><p>Cockroach, termite &amp; mosquito treatment</p><div class="price">From ₹599</div></div>
+      <div class="cat-card"><div class="ic">🔧</div><h3>Appliance Repair</h3><p>Washing machine, fridge, geyser, RO</p><div class="price">From ₹199 visit</div></div>
+      <div class="cat-card"><div class="ic">📦</div><h3>Packers &amp; Movers</h3><p>Local shifting, loading, unloading</p><div class="price">Free quote</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">How it works</div>
+      <h2>Three steps. No middlemen calling from unknown numbers.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Tell us the problem</h3>
+        <p>Type it, or send a WhatsApp voice note in your language. We match you with karigars who've done this exact job nearby.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Compare, then confirm</h3>
+        <p>See ratings, past jobs in your society, and the visiting charge before you commit — not after the karigar is at your door.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Pay after you're satisfied</h3>
+        <p>Settle by UPI or cash once the work is done and checked. Rate the karigar so your neighbours know too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="price-panel">
+      <div>
+        <h2>Priced for how India actually pays for home repair.</h2>
+        <p>Visiting charges stay low on purpose — they cover the karigar's time to show up, not the platform's margin. Karigar keeps the full job amount; we never take a cut of the repair bill itself.</p>
+        <div class="no-hidden">✓ No booking fee for the homeowner &nbsp; ✓ No surge pricing &nbsp; ✓ No advance payment</div>
+      </div>
+      <div class="price-list">
+        <div class="price-row"><div class="job">Electrician visit<span>Diagnosis + minor fix</span></div><div class="amt">₹149</div></div>
+        <div class="price-row"><div class="job">Plumber visit<span>Leak check, tap repair</span></div><div class="amt">₹149</div></div>
+        <div class="price-row"><div class="job">AC general service<span>1 unit, standard clean</span></div><div class="amt">₹499</div></div>
+        <div class="price-row"><div class="job">Full home deep clean<span>2BHK, 2 professionals</span></div><div class="amt">₹1,499</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">How Karigar stays free for homeowners</div>
+      <h2>The platform earns from karigars getting work — not from families needing repairs.</h2>
+      <p>This mirrors how Angi and UrbanCompany fund themselves, tuned to what a small local karigar can actually afford to pay for a steady stream of nearby jobs.</p>
+    </div>
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="tag">Per-lead fee</div>
+        <h3>₹19–₹79 per job lead</h3>
+        <p>Karigars pay a small fee only when matched to a real, nearby job request — priced by job value, not a flat rate that hurts small operators.</p>
+      </div>
+      <div class="model-card">
+        <div class="tag">Verified badge</div>
+        <h3>₹499 one-time onboarding</h3>
+        <p>Covers ID, address and police verification. This is what homeowners are actually paying trust for — so it's priced to just cover the check itself.</p>
+      </div>
+      <div class="model-card">
+        <div class="tag">Pro subscription</div>
+        <h3>₹299–₹899 / month</h3>
+        <p>Optional plan for full-time karigars: priority matching, more monthly leads, and a profile page they can share on WhatsApp.</p>
+      </div>
+      <div class="model-card">
+        <div class="tag">AMC referral</div>
+        <h3>10–15% on annual contracts</h3>
+        <p>Small commission when a homeowner signs an AMC (AC/appliance annual maintenance) through the platform — high-margin, low-frequency for us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">From the neighbourhood</div>
+      <h2>What homeowners in Delhi NCR are saying.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <p>"Geyser stopped working two days before winter. Karigar was at our door in 40 minutes and didn't ask for a rupee until it was fixed."</p>
+        <div class="testi-who"><div class="av">SP</div><div><b>Sunita P.</b><span>Vaishali, Ghaziabad</span></div></div>
+      </div>
+      <div class="testi">
+        <p>"I could see he'd already done 30 jobs in our own society. That mattered more to me than any star rating."</p>
+        <div class="testi-who"><div class="av">AV</div><div><b>Ashok V.</b><span>Indirapuram</span></div></div>
+      </div>
+      <div class="testi">
+        <p>"No pressure to pay online — paid cash once the tap was actually fixed. That's rare these days."</p>
+        <div class="testi-who"><div class="av">MR</div><div><b>Meena R.</b><span>Noida Sector 62</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="provider-band" id="providers">
+  <div class="wrap provider-grid">
+    <div>
+      <h2>Karigars: get jobs from your own area, without paying a middleman.</h2>
+      <p>List your skills for free. Pay only when you're matched to a job nearby — no commission on what you earn from the work itself.</p>
+      <a class="btn btn-primary" href="#">List your work — free</a>
+      <div class="mini-stats" style="margin-top:32px;">
+        <div><b>0%</b><span>commission on job value</span></div>
+        <div><b>3.2 km</b><span>avg. job distance</span></div>
+        <div><b>₹0</b><span>to create a profile</span></div>
+      </div>
+    </div>
+    <div class="ledger" style="background:var(--brick);">
+      <div class="ledger-head">
+        <div>
+          <div class="name">This week</div>
+          <div class="role">Priya Devi · House painter</div>
+        </div>
+        <div class="avatar" style="background:#fff;color:var(--brick);">PD</div>
+      </div>
+      <div class="check-list">
+        <div class="check-item"><span class="tick" style="background:#fff;color:var(--brick);">✓</span>6 leads received, 4 converted</div>
+        <div class="check-item"><span class="tick" style="background:#fff;color:var(--brick);">✓</span>₹212 spent on leads this week</div>
+        <div class="check-item"><span class="tick" style="background:#fff;color:var(--brick);">✓</span>₹18,400 earned from jobs — kept in full</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">Kari<span style="color:var(--marigold);">gar</span></div>
+        <p>A home services marketplace built for how Indian households actually decide who to let into their home — trust first, price upfront.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#">Electrician</a><a href="#">Plumber</a><a href="#">AC Service</a><a href="#">Painting</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">How it works</a><a href="#">Trust &amp; verification</a><a href="#">Careers</a>
+      </div>
+      <div class="foot-col">
+        <h4>For karigars</h4>
+        <a href="#">List your work</a><a href="#">Pricing for pros</a><a href="#">Help centre</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Karigar. Built for Delhi NCR, expanding city by city.</span>
+      <span>Hindi · English · Punjabi · Bengali · Tamil · Marathi</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
